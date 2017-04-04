@@ -108,6 +108,7 @@ firewall:
             dport: 138
 
 dhcpd:
+  authoritative: True
   domain_name: whobe.us
   domain_name_servers:
     - 10.0.0.1
@@ -119,12 +120,12 @@ dhcpd:
     10.0.0.0:
       comment: Home network subnet. Only planning on using the /24 block.
       netmask: 255.255.255.0
-    range:
-      - 10.0.0.100
-      - 10.0.0.199
-    routers:
-      - 10.0.0.1
-    broadcast_address: 10.0.0.255
+      range:
+        - 10.0.0.100
+        - 10.0.0.199
+      routers:
+        - 10.0.0.1
+      broadcast_address: 10.0.0.255
   hosts:
     seed01:
       comment: This host (the router)
