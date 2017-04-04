@@ -110,9 +110,23 @@ firewall:
 dhcpd:
   domain_name: whobe.us
   domain_name_servers:
-    - seed01.whobe.us
+    - 10.0.0.1
+  default_lease_time: 600
+  max_lease_time: 7200
   listen_interfaces:
     - br0
   subnets:
     10.0.0.0:
-      comment: This 
+      comment: Home network subnet. Only planning on using the /24 block.
+      netmask: 255.255.255.0
+    range:
+      - 10.0.0.100
+      - 10.0.0.199
+    routers:
+      - 10.0.0.1
+    broadcast_address: 10.0.0.255
+  hosts:
+    seed01:
+      comment: This host (the router)
+      hardware: ethernet 00:0e:c4:ce:7d:65
+      fixed_address: seed01.whobe.us

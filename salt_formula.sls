@@ -24,6 +24,14 @@ salt:
 
   # salt master config
   master:
+    ext_pillar:
+      - git:
+        - master git://github.com/brnsampson/rpi-saltstack.git:
+          - env: base
+        - production git://github.com/brnsampson/rpi-saltstack.git:
+          - env: prod
+        - develop git://github.com/brnsampson/rpi-saltstack.git:
+          - env: dev
     fileserver_backend:
       - git
       - roots
