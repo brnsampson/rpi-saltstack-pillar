@@ -27,11 +27,11 @@ salt:
     interface: '10.0.0.1'
     ext_pillar:
       - git:
-        - master git://github.com/brnsampson/rpi-saltstack.git:
+        - master https://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: base
-        - production git://github.com/brnsampson/rpi-saltstack.git:
+        - production https://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: prod
-        - develop git://github.com/brnsampson/rpi-saltstack.git:
+        - develop https://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: dev
     fileserver_backend:
       - git
@@ -41,6 +41,7 @@ salt:
       - git://github.com/saltstack-formulas/salt-formula.git
       - git://github.com/brnsampson/rpi-saltstack.git
       - git://github.com/brnsampson/rpi-saltstack-base.git
+      - git://github.com/brnsampson/rpi-saltstack-pillar.git
       - git://github.com/brnsampson/iptables-formula.git:
         - saltenv:
           - dev:
