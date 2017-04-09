@@ -24,6 +24,7 @@ salt:
 
   # salt master config
   master:
+    interface: '10.0.0.1'
     ext_pillar:
       - git:
         - master git://github.com/brnsampson/rpi-saltstack.git:
