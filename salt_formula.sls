@@ -53,7 +53,7 @@ salt:
         - /srv/salt
     pillar_roots:
       base:
-        - /srv/pillar
+        - /srv/rpi-saltstack-pillar
 #      dev:
 #        - /srv/pillar/dev
     # for salt-api with tornado rest interface
