@@ -29,8 +29,6 @@ salt:
       - git:
         - master https://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: base
-        - production https://github.com/brnsampson/rpi-saltstack-pillar.git:
-          - env: prod
         - develop https://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: dev
     fileserver_backend:
@@ -56,10 +54,8 @@ salt:
     pillar_roots:
       base:
         - /srv/pillar
-      prod:
-        - /srv/pillar/prod
-      dev:
-        - /srv/pillar/dev
+#      dev:
+#        - /srv/pillar/dev
     # for salt-api with tornado rest interface
     rest_tornado:
       port: 8000
