@@ -27,9 +27,9 @@ salt:
     interface: '10.0.0.1'
     ext_pillar:
       - git:
-        - master https://github.com/brnsampson/rpi-saltstack-pillar.git:
+        - master git://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: base
-        - develop https://github.com/brnsampson/rpi-saltstack-pillar.git:
+        - develop git://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: dev
     fileserver_backend:
       - git
