@@ -116,6 +116,11 @@ dhcpd:
       host_name: app02.whobe.us
       hardware: ethernet b8:27:eb:49:da:bf
       fixed_address: 10.0.0.11
+    app03:
+      comment: raspberry pi3 app host
+      host_name: app03.whobe.us
+      hardware: ethernet b8:27:eb:36:d6:ae
+      fixed_address: 10.0.0.12
 
 ### Overrides for the defaults specified by ###
 ### map.jinja                               ###
