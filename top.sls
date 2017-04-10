@@ -1,9 +1,10 @@
 base:
   '*':
-    - salt_formula
     - packages
-dev:
-  '*':
     - users
+  'app*':
+    - salt_formula
+dev:
   'seed*':
+    - salt_formula
     - router
