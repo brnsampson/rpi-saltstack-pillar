@@ -77,16 +77,16 @@ salt:
       #- salt_master_2
 
     fileserver_backend:
-      - git
+#      - git
       - roots
-    gitfs_remotes:
-      - git://github.com/saltstack-formulas/salt-formula.git
-    file_roots:
-      base:
-        - /srv/salt
-    pillar_roots:
-      base:
-        - /srv/pillar
+#    gitfs_remotes:
+#      - git://github.com/saltstack-formulas/salt-formula.git
+#    file_roots:
+#      base:
+#        - /srv/salt
+#    pillar_roots:
+#      base:
+#        - /srv/pillar
 
 salt_formulas:
   git_opts:
