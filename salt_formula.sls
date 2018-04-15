@@ -59,7 +59,7 @@ salt:
           - env: base
         - develop git://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: dev
-    gitfs_whitelist:
+    gitfs_saltenv_whitelist
       - base
       - prod
       - develop
@@ -108,7 +108,7 @@ salt_formulas:
       # Directory where Git repositories are downloaded
       basedir: /srv/formulas
       # Update the git repository to the latest version (False by default)
-      update: False
+      update: True
       # Options passed directly to the git.latest state
       options:
         rev: master
