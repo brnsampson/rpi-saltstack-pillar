@@ -21,41 +21,43 @@ salt:
     salt-syndic: 'salt-syndic'
     salt-cloud: 'salt-cloud'
     salt-ssh: 'salt-ssh'
+    pyinotify: 'python-pyinotify' the package to be installed for pyinotify
+
+# Set which release of SaltStack to use, default to 'latest'
+  # To get the available releases:
+  # * http://repo.saltstack.com/yum/redhat/7/x86_64/
+  # * http://repo.saltstack.com/apt/debian/8/amd64/
+  # release: "2016.11"
+  release: "latest"
 
   # salt master config
   master:
-    interface: '10.0.0.1'
+    interface: '0.0.0.0'
+    fileserver_backend:
+      - git
+      - s3fs
+      - roots
+    gitfs_remotes:
+      - git://github.com/saltstack-formulas/salt-formula.git
+      - git://github.com/brnsampson/rpi-saltstack.git
+      - git://github.com/brnsampson/rpi-saltstack-base.git
+      - git://github.com/brnsampson/rpi-saltstack-pillar.git
+    file_roots:
+      base:
+        - /srv/salt
+    pillar_roots:
+      base:
+        - /srv/pillar
     ext_pillar:
       - git:
         - master git://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: base
         - develop git://github.com/brnsampson/rpi-saltstack-pillar.git:
           - env: dev
-    fileserver_backend:
-      - git
-      - roots
-    gitfs_provider: pygit2
-    gitfs_remotes:
-      - git://github.com/saltstack-formulas/salt-formula.git
-      - git://github.com/brnsampson/rpi-saltstack.git
-      - git://github.com/brnsampson/rpi-saltstack-base.git
-      - git://github.com/brnsampson/rpi-saltstack-pillar.git
-      - git://github.com/brnsampson/iptables-formula.git:
-        - saltenv:
-          - dev:
-            - ref: develop
     gitfs_whitelist:
       - base
       - prod
       - develop
-    file_roots:
-      base:
-        - /srv/salt
-    pillar_roots:
-      base:
-        - /srv/rpi-saltstack-pillar
-#      dev:
-#        - /srv/pillar/dev
     # for salt-api with tornado rest interface
     rest_tornado:
       port: 8000
@@ -65,11 +67,12 @@ salt:
       disable_ssl: False
     # for profile configuration as https://docs.saltstack.com/en/latest/topics/tutorials/lxc.html#tutorial-lxc-profiles
 
+
   # salt minion config:
   minion:
 
     # single master setup
-    master: salt.whobe.us
+    master: salt
 
     # multi master setup
     #master:
@@ -77,16 +80,16 @@ salt:
       #- salt_master_2
 
     fileserver_backend:
-#      - git
+      - git
       - roots
-#    gitfs_remotes:
-#      - git://github.com/saltstack-formulas/salt-formula.git
-#    file_roots:
-#      base:
-#        - /srv/salt
-#    pillar_roots:
-#      base:
-#        - /srv/pillar
+    gitfs_remotes:
+      - git://github.com/saltstack-formulas/salt-formula.git
+    file_roots:
+      base:
+        - /srv/salt
+    pillar_roots:
+      base:
+        - /srv/pillar
 
 salt_formulas:
   git_opts:
@@ -104,11 +107,11 @@ salt_formulas:
       # Options passed directly to the git.latest state
       options:
         rev: master
- #   develop:
- #     basedir: /srv/formulas/dev
- #     update: True
- #     options:
- #       rev: develop
+    dev:
+      basedir: /srv/formulas/dev
+      update: True
+      options:
+        rev: develop
   # Options of the file.directory state that creates the directory where
   # the git repositories of the formulas are stored
   basedir_opts:
@@ -121,7 +124,9 @@ salt_formulas:
     base:
       - salt-formula
       - consul-formula
-      - jenkins-formula
-      - dhcpd-formula
+      - nomad-formula
+    infra:
+      - consul-formula
+      - vault-formula
+      - nomad-formula
       - bind-formula
-      - network-debian-formula
