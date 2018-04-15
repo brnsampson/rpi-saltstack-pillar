@@ -42,6 +42,11 @@ salt:
       - git://github.com/brnsampson/rpi-saltstack.git
       - git://github.com/brnsampson/rpi-saltstack-base.git
       - git://github.com/brnsampson/rpi-saltstack-pillar.git
+      - git://github.com/saltstack-formulas/bind-formula.git
+      - git://github.com/saltstack-formulas/consul-formula.git
+      - git://github.com/saltstack-formulas/vault-formula.git
+      - git://github.com/saltstack-formulas/nomad-formula.git
+      - git://github.com/saltstack-formulas/golang-formula.git
     file_roots:
       base:
         - /srv/salt
@@ -122,11 +127,6 @@ salt_formulas:
   # List of formulas to enable in each environment
   list:
     base:
-      - salt-formula
-      - golang-formula
-      - consul-formula
-      - nomad-formula
-    infra:
       - salt-formula
       - golang-formula
       - consul-formula
