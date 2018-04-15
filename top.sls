@@ -2,7 +2,8 @@ base:
   '*':
     - packages
     - users
-    - salt_formula
+    - salt-service
+    - salt-formula
     - golang
   'roles:bootstrap':
     - match: grain
