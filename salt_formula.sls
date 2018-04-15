@@ -123,9 +123,12 @@ salt_formulas:
   list:
     base:
       - salt-formula
+      - golang-formula
       - consul-formula
       - nomad-formula
     infra:
+      - salt-formula
+      - golang-formula
       - consul-formula
       - vault-formula
       - nomad-formula
